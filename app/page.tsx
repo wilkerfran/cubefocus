@@ -2,6 +2,7 @@
 import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
 import { useTimerStore, DURATIONS } from '@/store/useTimerStore'
+import Header from '@/components/Header'
 
 const CubeScene = dynamic(() => import('@/components/CubeScene'), { ssr: false })
 
@@ -42,11 +43,9 @@ export default function Home() {
   }
 
   return (
+    <>
+     <Header mode={mode} />
     <main className="min-h-screen bg-[#0f0f13] text-white flex flex-col items-center py-8 px-4">
-      {/* Header */}
-      <h1 className="text-3xl font-bold tracking-widest mb-6 text-white/90">
-        CUBE<span className="text-[#e05c5c]">FOCUS</span>
-      </h1>
 
       {/* Mode tabs */}
       <div className="flex gap-2 mb-6 bg-white/5 rounded-full p-1">
@@ -137,5 +136,6 @@ export default function Home() {
         </ul>
       </div>
     </main>
+    </>
   )
 }
